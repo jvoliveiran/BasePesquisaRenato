@@ -23,17 +23,26 @@ class StudentsController < ApplicationController
     else
       @student = Student.new
       @professions = Profession.all.order(:name)
+      flash.now[:error] = "O estudante não foi salva! Verifique os dados e tente novamente!"
       render action: :new
     end
 
   end
 
   def edit
-
+    @student = Student.find(params[:id])
+    @professions = Profession.all.order(:name)
   end
 
   def update
+    @student = Student.find(params[:id])
 
+    if @student.update(student_params)
+      redirect_to student_path(params[:id]), :notice => "Estudante atualizado!"
+    else
+      flash.now[:alert] = "Erro na atualização dos dados! Tente novamente!"
+      render action: :index
+    end
   end
 
   def destroy
