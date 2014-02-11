@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  reponsible: MyString
+  age: 1
+  neighborhood: MyString
+  street: MyString
+
+two:
+  name: MyString
+  reponsible: MyString
+  age: 1
+  neighborhood: MyString
+  street: MyString
