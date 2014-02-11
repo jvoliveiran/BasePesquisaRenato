@@ -21,6 +21,8 @@ class StudentsController < ApplicationController
     if @student.save
       redirect_to students_path, :notice => "Aluno salvo com sucesso"
     else
+      @student = Student.new
+      @professions = Profession.all.order(:name)
       render action: :new
     end
 

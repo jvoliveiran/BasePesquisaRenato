@@ -15,6 +15,8 @@ class ProfessionsController < ApplicationController
      if profession.save
        redirect_to professions_path, :notice => "Profissão Salva com Sucesso!"
      else
+       @profession = Profession.new
+       flash.now[:error] = "A profissão não foi salva! Verifique os dados e tente novamente!"
        render action: :new
      end
   end
