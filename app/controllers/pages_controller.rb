@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   end
   
   def inside
+    home_path
   end 
     
 end
