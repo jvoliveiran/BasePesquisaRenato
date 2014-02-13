@@ -6,11 +6,13 @@ u = User.new(
   username: "admin",
   email: "admin@example.com",
   password: "admin1234",
-  password_confirmation: "1234",
+  password_confirmation: "admin1234",
   admin: true
 )
 #u.skip_confirmation!
-u.save!
+if u.valid?
+  u.save!
+end
 
 #usuário para cliente renato
 u = User.new(
@@ -20,7 +22,9 @@ u = User.new(
   password_confirmation: "renato123",
   admin: true
 )
-u.save!
+if u.valid?
+  u.save!
+end
 
 # Prompt for test data
 STDOUT.puts
