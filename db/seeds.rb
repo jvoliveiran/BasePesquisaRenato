@@ -12,6 +12,16 @@ u = User.new(
 #u.skip_confirmation!
 u.save!
 
+#usuário para cliente renato
+u = User.new(
+  username: "renato",
+  email: "renatombs@hotmail.com",
+  password: "renato123",
+  password_confirmation: "renato123",
+  admin: true
+)
+u.save!
+
 # Prompt for test data
 STDOUT.puts
 STDOUT.print "Do you want to seed test data?(y/n):"
