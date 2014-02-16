@@ -14,5 +14,13 @@ Historiarenato::Application.routes.draw do
   resources :professions
 
   resources :students
+
+  resources :workshops
+
+  resources :lessons
+
+  resources :years
+
+  resources :book_observations
   
 end

@@ -1,0 +1,2 @@
+module BookObservationsHelper
+end

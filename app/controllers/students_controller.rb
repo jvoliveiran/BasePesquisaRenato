@@ -46,7 +46,11 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+    @student = Student.find(params[:id])
 
+    if @student.destroy
+      redirect_to students_path, :notice => "Aluno excluído com sucesso!"
+    end
   end
 
   def student_params

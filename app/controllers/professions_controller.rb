@@ -33,12 +33,15 @@ class ProfessionsController < ApplicationController
     @profession = Profession.find(params[:id])
 
     if @profession.update(profession_params)
-      redirect_to profession_path(params[:id]), :notice => "Profissão Atualizada com Sucesso!"
+      redirect_to profession_path(params[:id]), :notice => "Profissão atualizada com sucesso!"
     end
   end
 
   def destroy
-
+    @profession = Profession.find(params[:id])
+    if @profession.destroy
+      redirect_to professions_path, :notice => "Profissão excluída com sucesso!"
+    end
   end
 
   def profession_params

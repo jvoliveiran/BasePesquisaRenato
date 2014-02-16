@@ -1,14 +1,36 @@
 <% if !user_signed_in? %>
-<li><%= link_to "Sign in", new_user_session_path %></li>
+
+    <li><%= link_to "Sign in", new_user_session_path %></li>
+
 <% else %>
-<li><%= link_to "Profissão", professions_path %></li>
-<li><%= link_to "Aluno", students_path %></li>
-<li><%= link_to "Edit your account", edit_user_registration_path %></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        Módulo Alunos <span class="caret"></span>
+      </a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Profissão", professions_path %></li>
+          <li><%= link_to "Aluno", students_path %></li>
+        </ul>
+    </li>
 
-<% if current_user.admin? %>
-<li><%= link_to "Admin", admin_root_path %></li>
-<li><%= link_to "Sign up", new_user_registration_path %></li>
-<% end %>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        Módulo Livros <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Oficina", workshops_path %></li>
+        <li><%= link_to "Curso", lessons_path %></li>
+        <li><%= link_to "Ano", years_path %></li>
+        <li><%= link_to "Observação", book_observations_path %></li>
+      </ul>
+    </li>
 
-<li><%= link_to "Sign out", destroy_user_session_path, data:{method: :delete} %></li>
+    <li><%= link_to "Edit your account", edit_user_registration_path %></li>
+
+    <% if current_user.admin? %>
+        <li><%= link_to "Admin", admin_root_path %></li>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+    <% end %>
+
+    <li><%= link_to "Sign out", destroy_user_session_path, data:{method: :delete} %></li>
 <% end %>
