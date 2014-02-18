@@ -1,0 +1,28 @@
+<h1>Livros <small>Lista</small></h1>
+<p><%= link_to "Novo Livro", new_book_path, class: "btn btn-primary" %></p>
+
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Ano</th>
+    <th>Turno</th>
+    <th>Turma</th>
+    <th>Created At</th>
+    <th>Ver Mais</th>
+    <th>Editar</th>
+    <th>Deletar</th>
+  </tr>
+
+  <% @books.each do |books| %>
+      <tr>
+        <td><%= books.id %></td>
+        <td><%= books.yearbook %></td>
+        <td><%= books.turn %></td>
+        <td><%= books.classname %></td>
+        <td><%= time_ago_in_words(books.created_at) %></td>
+        <td><%= link_to "Detalhes", book_path(books), class: "btn btn-info" %></td>
+        <td><%= link_to "Editar", edit_book_path(books), class: "btn btn-warning" %></td>
+        <td><%= link_to "Deletar", books, :confirm => "Tem certeza que deseja excluir esse livro?", :method => :delete, class: "btn btn-danger" %></td>
+      </tr>
+  <% end %>
+</table>

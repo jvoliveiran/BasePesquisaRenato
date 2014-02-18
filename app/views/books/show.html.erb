@@ -1,0 +1,36 @@
+<h1>Detalhes - Livro</h1>
+
+<p>
+  Ano: <%= @book.yearbook %>
+</p>
+
+<p>
+  Turno: <%= @book.turn %>
+</p>
+
+<p>
+  Turma: <%= @book.classname %>
+</p>
+
+<p>
+  Oficina: <%= @book.workshop.name %>
+</p>
+
+<p>
+  Curso: <%= @book.lesson.name %>
+</p>
+
+<p>
+  Ano: <%= @book.year.name %>
+</p>
+
+<p>
+  <h6>Alunos</h6>
+  <% @students.each do |student| %>
+    <%= student.name %><br />
+  <% end %>
+</p>
+
+<p>
+  <%= link_to "Voltar", books_path, class: "btn btn-primary" %>
+</p>

@@ -23,7 +23,7 @@ class StudentsController < ApplicationController
     else
       @student = Student.new
       @professions = Profession.all.order(:name)
-      flash.now[:error] = "O estudante não foi salva! Verifique os dados e tente novamente!"
+      flash.now[:error] = "O estudante não foi salvo! Verifique os dados e tente novamente!"
       render action: :new
     end
 

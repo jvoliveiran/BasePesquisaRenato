@@ -22,5 +22,7 @@ Historiarenato::Application.routes.draw do
   resources :years
 
   resources :book_observations
+
+  resources :books
   
 end
