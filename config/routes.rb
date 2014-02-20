@@ -24,5 +24,7 @@ Historiarenato::Application.routes.draw do
   resources :book_observations
 
   resources :books
+  get 'books/:id/student_observation', to: 'books#students_obs', as: 'student_observation'
+  patch '/books/change_students_obs/:id', to: 'books#change_students_obs'
   
 end

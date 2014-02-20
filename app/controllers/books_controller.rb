@@ -7,6 +7,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @student_books = @book.student_books
     @students = @book.students
   end
 
@@ -16,11 +17,11 @@ class BooksController < ApplicationController
     @workshops = Workshop.order(:name).all
     @lessons = Lesson.order(:name).all
     @years = Year.order(:name).all
+    @observations = BookObservation.order(:name).all
   end
 
   def create
     book = Book.new(book_params)
-
     if book.save
       redirect_to books_path, :notice => "Livro cadastrado com sucesso!"
     else
@@ -29,6 +30,7 @@ class BooksController < ApplicationController
       @workshops = Workshop.order(:name).all
       @lessons = Lesson.order(:name).all
       @years = Year.order(:name).all
+      @observations = BookObservation.order(:name).all
       flash.now[:notice] = "O livro não foi salvo! Verifique os dados e tente novamente!"
       render action: :new
     end
@@ -40,6 +42,7 @@ class BooksController < ApplicationController
     @workshops = Workshop.order(:name).all
     @lessons = Lesson.order(:name).all
     @years = Year.order(:name).all
+    @observations = BookObservation.order(:name).all
   end
 
   def update
@@ -55,8 +58,27 @@ class BooksController < ApplicationController
 
   def destroy
     book = Book.find(params[:id])
+    students = book.student_books
     if book.destroy
+      students.each do |s|
+        s.destroy
+      end
       redirect_to books_path, :notice => "O livro foi excluído com sucesso!"
+    end
+  end
+
+  #Custom Actions
+
+  def students_obs
+    @student_book = StudentBook.find(params[:id])
+    @book = @student_book.book
+  end
+
+  def change_students_obs
+    @student_book = StudentBook.find(params[:id])
+
+    if @student_book.update(student_book_params)
+      redirect_to books_path
     end
   end
 
@@ -72,6 +94,15 @@ class BooksController < ApplicationController
         :book_observation_id,
         :year_id,
         :student_ids => []
+        #:book_observation_ids => []
     )
+  end
+
+  def student_book_params
+     params.require(:student_book).permit(
+       :student_id,
+       :book_id,
+       :book_observation_id
+     )
   end
 end

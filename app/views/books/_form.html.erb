@@ -63,7 +63,13 @@
           <%= f.label :student_ids %>
           <div class="row">
             <div class="col-sm-6">
-              <%= f.collection_check_boxes :student_ids, @students, :id, :name, {:item_wrapper_class => 'checkbox_container'}, class: "form-control" %>
+              <% Student.order(:name).all.each do |student| %>
+                <p>
+                    <%= check_box_tag "book[student_ids][]", student.id, @book.students.include?(student) %>
+                    <%= student.name %>
+                    <!--<%= select_tag "book[book_observation_ids][]", options_from_collection_for_select(@observations, "id", "name")%>-->
+                </p>
+              <% end %>
             </div>
           </div>
         </div>
