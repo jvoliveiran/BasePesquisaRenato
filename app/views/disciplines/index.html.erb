@@ -1,0 +1,29 @@
+<h1>Disciplinas <small>Lista</small></h1>
+<p><%= link_to "Nova Disciplina", new_discipline_path, class: "btn btn-primary" %></p>
+
+<div class="text-center">
+  <p><%= page_entries_info @disciplines %></p>
+  <%= paginate @disciplines %>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Created At</th>
+    <th>Ver Mais</th>
+    <th>Editar</th>
+    <th>Deletar</th>
+  </tr>
+
+  <% @disciplines.each do |discipline| %>
+      <tr>
+        <td><%= discipline.id %></td>
+        <td><%= discipline.name %></td>
+        <td><%= time_ago_in_words(discipline.created_at) %></td>
+        <td><%= link_to "Detalhes", discipline_path(discipline), class: "btn btn-info" %></td>
+        <td><%= link_to "Editar", edit_discipline_path(discipline), class: "btn btn-warning" %></td>
+        <td><%= link_to "Deletar", discipline, :confirm => "Tem certeza que deseja excluir essa disciplina?", :method => :delete, class: "btn btn-danger" %></td>
+      </tr>
+  <% end %>
+</table>

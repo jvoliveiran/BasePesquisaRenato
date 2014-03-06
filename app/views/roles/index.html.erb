@@ -1,0 +1,29 @@
+<h1>Cargos <small>Lista</small></h1>
+<p><%= link_to "Novo Cargo", new_role_path, class: "btn btn-primary" %></p>
+
+<div class="text-center">
+  <p><%= page_entries_info @roles %></p>
+  <%= paginate @roles %>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Created At</th>
+    <th>Ver Mais</th>
+    <th>Editar</th>
+    <th>Deletar</th>
+  </tr>
+
+  <% @roles.each do |role| %>
+      <tr>
+        <td><%= role.id %></td>
+        <td><%= role.name %></td>
+        <td><%= time_ago_in_words(role.created_at) %></td>
+        <td><%= link_to "Detalhes", role, class: "btn btn-info" %></td>
+        <td><%= link_to "Editar", edit_role_path(role), class: "btn btn-warning" %></td>
+        <td><%= link_to "Deletar", role, :confirm => "Tem certeza que deseja excluir esse cargo?", :method => :delete, class: "btn btn-danger" %></td>
+      </tr>
+  <% end %>
+</table>
