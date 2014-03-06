@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140219142130) do
+ActiveRecord::Schema.define(version: 20140306195353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,12 @@ ActiveRecord::Schema.define(version: 20140219142130) do
   add_index "books", ["workshop_id"], name: "index_books_on_workshop_id", using: :btree
   add_index "books", ["year_id"], name: "index_books_on_year_id", using: :btree
 
+  create_table "disciplines", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
@@ -52,6 +58,15 @@ ActiveRecord::Schema.define(version: 20140219142130) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "lesson_books", force: true do |t|
+    t.integer  "lesson_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lesson_books", ["lesson_id", "book_id"], name: "index_lesson_books_on_lesson_id_and_book_id", unique: true, using: :btree
+
   create_table "lessons", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -59,6 +74,12 @@ ActiveRecord::Schema.define(version: 20140219142130) do
   end
 
   create_table "professions", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

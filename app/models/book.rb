@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
   belongs_to :workshop
-  belongs_to :lesson
+  has_many :lessons, :through => :lesson_books
+  has_many :lesson_books
   belongs_to :year
   has_many :student_books
   has_many :students, :through => :student_books

@@ -45,7 +45,12 @@
           <%= f.label :lesson_id %>
           <div class="row">
             <div class="col-sm-6">
-              <%= f.collection_select :lesson_id, @lessons, :id, :name, class: "form-control" %>
+              <% Lesson.order(:name).all.each do |lesson| %>
+                  <p>
+                    <%= check_box_tag "book[lesson_ids][]", lesson.id, @book.lessons.include?(lesson) %>
+                    <%= lesson.name %>
+                  </p>
+              <% end %>
             </div>
           </div>
         </div>

@@ -17,7 +17,10 @@
 </p>
 
 <p>
-  Curso: <%= @book.lesson.name %>
+  Curso:
+  <% @lesson_books.each do |lb| %>
+    <%= lb.lesson.name %>
+  <% end %>
 </p>
 
 <p>
@@ -31,9 +34,8 @@
     <%= sb.student.name %>
     <% if !sb.book_observation.nil? %>
         ( <%= sb.book_observation.name  %> )
-    <% else %>
-        <%= link_to "Atualizar situação", student_observation_path(sb), class: "btn btn-info btn-xs" %>
     <% end %>
+    <%= link_to "Atualizar situação", student_observation_path(sb), class: "btn btn-info btn-xs" %>
     </p>
   <% end %>
 </p>

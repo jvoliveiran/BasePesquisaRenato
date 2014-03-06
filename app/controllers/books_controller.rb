@@ -9,6 +9,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @student_books = @book.student_books
     @students = @book.students
+    @lesson_books = @book.lesson_books
   end
 
   def new
@@ -72,6 +73,7 @@ class BooksController < ApplicationController
   def students_obs
     @student_book = StudentBook.find(params[:id])
     @book = @student_book.book
+    @lesson_books = @book.lesson_books
   end
 
   def change_students_obs
@@ -90,11 +92,10 @@ class BooksController < ApplicationController
         :turn,
         :classname,
         :workshop_id,
-        :lesson_id,
         :book_observation_id,
         :year_id,
-        :student_ids => []
-        #:book_observation_ids => []
+        :student_ids => [],
+        :lesson_ids => []
     )
   end
 

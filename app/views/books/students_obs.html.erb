@@ -1,28 +1,33 @@
 <h1>Situação dos Alunos</h1>
 
 <p>
-  Ano: <%= @book.yearbook %>
+  <b>Ano:</b> <%= @book.yearbook %>
 </p>
 
 <p>
-  Turno: <%= @book.turn %>
+  <b>Turno:</b> <%= @book.turn %>
 </p>
 
 <p>
-  Turma: <%= @book.classname %>
+  <b>Turma:</b> <%= @book.classname %>
 </p>
 
 <p>
-  Oficina: <%= @book.workshop.name %>
+  <b>Oficina:</b> <%= @book.workshop.name %>
 </p>
 
 <p>
-  Curso: <%= @book.lesson.name %>
+  <b>Curso:</b>
+  <% @lesson_books.each do |lb| %>
+      <%= lb.lesson.name %>
+  <% end %>
 </p>
 
 <p>
-  Ano: <%= @book.year.name %>
+  <b>Ano:</b> <%= @book.year.name %>
 </p>
+
+<p><b>Aluno</b>: <%= @student_book.student.name %></p>
 
 <%= form_for @student_book, :url => { :action => "change_students_obs" } do |f|%>
     <%= f.hidden_field :student_id %>
