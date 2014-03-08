@@ -2,11 +2,13 @@ class ServantsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @servants = Servant.order(:yearbook).page(params[:page]).per(10)
+    @servants = Servant.order(:name).page(params[:page]).per(10)
   end
 
   def show
     @servant = Servant.find(params[:id])
+    @role_servants = @servant.role_servants
+    @discipline_servants = @servant.discipline_servants
   end
 
   def new
@@ -54,8 +56,8 @@ class ServantsController < ApplicationController
 
   private
 
-  def book_params
-    params.require(:book).permit(
+  def servant_params
+    params.require(:servant).permit(
         :name,
         :year_born,
         :place_of_birth,

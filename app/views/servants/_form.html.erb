@@ -1,0 +1,106 @@
+<div class="row">
+  <div class="col-sm-6">
+
+    <p><%= link_to "Voltar", servants_path, class: "btn btn-primary" %></p>
+
+    <%= form_for @servant do |f| %>
+
+        <div class="form-group">
+          <%= f.label :name %>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :year_born %>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= f.number_field :year_born, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :place_of_birth %>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= f.text_field :place_of_birth, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :civil_state %>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= f.select :civil_state, Servant::CIVIL_STATE, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :year_in %>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= f.number_field :year_in, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :year_out %>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= f.number_field :year_out, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :roles %>
+          <div class="row">
+            <div class="col-sm-6">
+              <% @roles.each do |role| %>
+                  <p>
+                    <%= check_box_tag "servant[role_ids][]", role.id, @servant.roles.include?(role) %>
+                    <%= role.name %>
+                  </p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :disciplines %>
+          <div class="row">
+            <div class="col-sm-6">
+              <% @disciplines.each do |disc| %>
+                  <p>
+                    <%= check_box_tag "servant[discipline_ids][]", disc.id, @servant.disciplines.include?(disc) %>
+                    <%= disc.name %>
+                  </p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :obs %>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= f.text_area :obs, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Salvar", class: "btn btn-success" %>
+        </div>
+
+    <% end %>
+
+  </div>
+</div>

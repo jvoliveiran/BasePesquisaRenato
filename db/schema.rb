@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140306195353) do
+ActiveRecord::Schema.define(version: 20140306211235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20140306195353) do
   add_index "books", ["lesson_id"], name: "index_books_on_lesson_id", using: :btree
   add_index "books", ["workshop_id"], name: "index_books_on_workshop_id", using: :btree
   add_index "books", ["year_id"], name: "index_books_on_year_id", using: :btree
+
+  create_table "discipline_servants", force: true do |t|
+    t.integer  "discipline_id"
+    t.integer  "servant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "discipline_servants", ["discipline_id", "servant_id"], name: "index_discipline_servants_on_discipline_id_and_servant_id", unique: true, using: :btree
 
   create_table "disciplines", force: true do |t|
     t.string   "name"
@@ -79,8 +88,29 @@ ActiveRecord::Schema.define(version: 20140306195353) do
     t.datetime "updated_at"
   end
 
+  create_table "role_servants", force: true do |t|
+    t.integer  "role_id"
+    t.integer  "servant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "role_servants", ["role_id", "servant_id"], name: "index_role_servants_on_role_id_and_servant_id", unique: true, using: :btree
+
   create_table "roles", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "servants", force: true do |t|
+    t.string   "name"
+    t.integer  "year_born"
+    t.string   "place_of_birth"
+    t.string   "civil_state"
+    t.integer  "year_in"
+    t.integer  "year_out"
+    t.text     "obs"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
