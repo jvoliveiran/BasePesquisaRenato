@@ -32,5 +32,9 @@ Historiarenato::Application.routes.draw do
   resources :disciplines
 
   resources :servants
+
+  resources :diaries
+
+  resources :student_diaries
   
 end

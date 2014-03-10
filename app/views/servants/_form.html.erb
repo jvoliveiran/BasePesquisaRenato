@@ -63,6 +63,7 @@
           <%= f.label :roles %>
           <div class="row">
             <div class="col-sm-6">
+              <%=hidden_field_tag 'servant[role_ids][]'%>
               <% @roles.each do |role| %>
                   <p>
                     <%= check_box_tag "servant[role_ids][]", role.id, @servant.roles.include?(role) %>
@@ -77,6 +78,7 @@
           <%= f.label :disciplines %>
           <div class="row">
             <div class="col-sm-6">
+              <%=hidden_field_tag 'servant[discipline_ids][]'%>
               <% @disciplines.each do |disc| %>
                   <p>
                     <%= check_box_tag "servant[discipline_ids][]", disc.id, @servant.disciplines.include?(disc) %>

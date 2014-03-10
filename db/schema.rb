@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140306211235) do
+ActiveRecord::Schema.define(version: 20140309142539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20140306211235) do
   add_index "books", ["lesson_id"], name: "index_books_on_lesson_id", using: :btree
   add_index "books", ["workshop_id"], name: "index_books_on_workshop_id", using: :btree
   add_index "books", ["year_id"], name: "index_books_on_year_id", using: :btree
+
+  create_table "diaries", force: true do |t|
+    t.integer  "year_id"
+    t.integer  "discipline_id"
+    t.integer  "servant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "discipline_servants", force: true do |t|
     t.integer  "discipline_id"
@@ -125,6 +133,22 @@ ActiveRecord::Schema.define(version: 20140306211235) do
 
   add_index "student_books", ["book_observation_id"], name: "index_student_books_on_book_observation_id", using: :btree
   add_index "student_books", ["student_id", "book_id"], name: "index_student_books_on_student_id_and_book_id", unique: true, using: :btree
+
+  create_table "student_diaries", force: true do |t|
+    t.float    "value_amount_f"
+    t.float    "value_amount_c"
+    t.float    "average"
+    t.string   "behavior"
+    t.string   "application"
+    t.integer  "absence"
+    t.integer  "book_observation_id"
+    t.integer  "student_id"
+    t.integer  "diary_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "student_diaries", ["diary_id", "student_id"], name: "index_student_diaries_on_diary_id_and_student_id", unique: true, using: :btree
 
   create_table "students", force: true do |t|
     t.string   "name"

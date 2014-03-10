@@ -1,9 +1,11 @@
 class Servant < ActiveRecord::Base
-  has_many :roles, :through => :role_servants
   has_many :role_servants
+  has_many :roles, :through => :role_servants
 
   has_many :disciplines, :through => :discipline_servants
   has_many :discipline_servants
+
+  has_many :diaries, dependent: :nullify
 
   CIVIL_STATE = ["", "Casado", "Solteiro", "Viuvo"]
 
