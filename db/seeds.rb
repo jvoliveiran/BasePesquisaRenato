@@ -26,6 +26,18 @@ if u.valid?
   u.save!
 end
 
+#usuário para cliente renato
+u = User.new(
+    username: "jose",
+    email: "joseafonso@hotmail.com",
+    password: "jose123",
+    password_confirmation: "jose123",
+    admin: true
+)
+if u.valid?
+  u.save!
+end
+
 # Prompt for test data
 STDOUT.puts
 STDOUT.print "Do you want to seed test data?(y/n):"
