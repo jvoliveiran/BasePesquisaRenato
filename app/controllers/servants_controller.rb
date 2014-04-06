@@ -65,6 +65,7 @@ class ServantsController < ApplicationController
         :year_in,
         :year_out,
         :obs,
+        :wage,
         :role_ids => [],
         :discipline_ids => []
     )

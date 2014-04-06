@@ -9,7 +9,6 @@
     <th>Turma</th>
     <th>Created At</th>
     <th>Ver Mais</th>
-    <th>Observações dos Alunos</th>
     <th>Editar</th>
     <th>Deletar</th>
   </tr>
@@ -22,7 +21,6 @@
         <td><%= books.classname %></td>
         <td><%= time_ago_in_words(books.created_at) %></td>
         <td><%= link_to "Detalhes", book_path(books), class: "btn btn-info" %></td>
-        <td><%= link_to "Adicionar Observação", student_observation_path(books), class: "btn btn-primary"%></td>
         <td><%= link_to "Editar", edit_book_path(books), class: "btn btn-warning" %></td>
         <td><%= link_to "Deletar", books, :confirm => "Tem certeza que deseja excluir esse livro?", :method => :delete, class: "btn btn-danger" %></td>
       </tr>

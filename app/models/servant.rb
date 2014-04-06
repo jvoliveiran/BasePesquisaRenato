@@ -11,4 +11,5 @@ class Servant < ActiveRecord::Base
 
   validates_presence_of :name
   validates_length_of :name, :in => 5..100
+  validates_numericality_of :wage, :only_integer => true
 end
