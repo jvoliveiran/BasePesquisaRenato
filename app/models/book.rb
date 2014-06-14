@@ -10,4 +10,11 @@ class Book < ActiveRecord::Base
   #has_and_belongs_to_many :book_observations, join_table: :student_books
 
   validates_presence_of :year, :turn, :classname
+
+  #attr_accessor :complete_name
+
+  def complete_name
+    self.yearbook.to_s + " " + self.classname + " - " + self.turn
+  end
+
 end

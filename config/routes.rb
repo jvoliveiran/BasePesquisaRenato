@@ -13,6 +13,11 @@ Historiarenato::Application.routes.draw do
 
   resources :professions
 
+  match 'students/search_for_workshops' => 'students#search_workshops', as: 'search_for_workshops', via: [:get, :post]
+  match 'students/search_for_years' => 'students#search_years', as: 'search_for_years', via: [:get, :post]
+  match 'students/search_for_observation' => 'students#search_observations', as: 'search_for_observations', via: [:get, :post]
+  match 'students/search_general_student' => 'students#search_general', as: 'search_general_student', via: [:get, :post]
+
   resources :students
 
   resources :workshops

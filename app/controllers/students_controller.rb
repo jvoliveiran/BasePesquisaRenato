@@ -53,6 +53,66 @@ class StudentsController < ApplicationController
     end
   end
 
+  #Métodos para Relatórios
+
+  def search_workshops
+    @workshops = Workshop.all.order(:name)
+
+    if(params[:idworkshop])
+      @students = Student.searchStudentsInWorkshop(params[:idworkshop])
+      @valorPesquisa = Workshop.find(params[:idworkshop]).name
+    else
+      @students
+      @valorPesquisa
+    end
+  end
+
+  def search_years
+    @years = Year.all.order(:name)
+
+    if(params[:idyear])
+      @students = Student.searchStudentsInYear(params[:idyear])
+      @valorPesquisa = Year.find(params[:idyear]).name
+    else
+      @students
+      @valorPesquisa
+    end
+
+  end
+
+  def search_observations
+    @observations = BookObservation.all.order(:name)
+
+    if(params[:idobservation])
+      @students = Student.searchStudentsInObservation(params[:idobservation])
+      @valorPesquisa = BookObservation.find(params[:idobservation]).name
+    else
+      @students
+      @valorPesquisa
+    end
+  end
+
+  def search_general
+
+    @observations = BookObservation.all.order(:name)
+    @years = Year.all.order(:name)
+    @workshops = Workshop.all.order(:name)
+    @books = Book.all.order(:yearbook)
+
+    if(params[:nomelogradouro] || params[:idobservation] || params[:idyear] || params[:nometurno] || params[:idworkshop] || params[:idbook])
+      @students = Student.searchGeneral(params[:nomelogradouro],params[:idobservation],params[:idyear],params[:nometurno],params[:idworkshop], params[:idbook])
+      @nomelogradouro = params[:nomelogradouro]
+      @idobservation = params[:idobservation]
+      @idyear = params[:idyear]
+      @nometurno = params[:nometurno]
+      @idworkshop = params[:idworkshop]
+      @idbook = params[:idbook]
+    else
+      @students
+    end
+
+  end
+
   def student_params
     params.require(:student).permit(
         :name,
@@ -62,10 +122,6 @@ class StudentsController < ApplicationController
         :street,
         :profession_id
     )
-  end
-
-  def set_profession
-
   end
 
 end

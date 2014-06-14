@@ -1,6 +1,12 @@
 <h1>Alunos <small>Lista</small></h1>
 <p><%= link_to "Novo Aluno", new_student_path, class: "btn btn-primary" %></p>
 
+<h3>Relatórios</h3>
+<p>
+  <%= link_to "Relatório Geral de Alunos", search_general_student_path, class: "btn btn-primary btn-sm" %>
+</p>
+
+
 <table class="table table-striped">
   <tr>
     <th>ID</th>

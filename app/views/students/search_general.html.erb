@@ -1,0 +1,74 @@
+<h1>Relatório Geral de Alunos</h1>
+
+<p>
+<div class="row">
+  <div class="col-sm-12">
+
+    <%= form_tag :controller => 'students', :action => 'search_general', :method => 'get' do %>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Livro: </label>
+              <%= select_tag 'idbook', options_from_collection_for_select(@books, :id, :complete_name, @idbook), :include_blank => true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Ano: </label>
+              <%= select_tag 'idyear', options_from_collection_for_select(@years, :id, :name, @idyear), :include_blank => true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Excluído: </label>
+              <%= select_tag 'idobservation', options_from_collection_for_select(@observations, :id, :name, @idobservation), :include_blank => true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Curso: </label>
+              <%= select_tag 'idworkshop', options_from_collection_for_select(@workshops, :id, :name, @idworkshop), :include_blank => true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Logradouro: </label>
+              <%= text_field_tag 'nomelogradouro', @nomelogradouro %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Turno: </label>
+              <%= text_field_tag 'nometurno', @nometurno  %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= submit_tag "Buscar", :name => nil, class: "btn btn-info" %>
+        </div>
+    <% end %>
+
+  </div>
+</div>
+</p>
+
+<p>
+  <%= render "search" %>
+</p>

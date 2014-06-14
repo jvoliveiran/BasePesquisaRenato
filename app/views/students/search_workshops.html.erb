@@ -1,0 +1,29 @@
+<h1>Relatório de Alunos</h1>
+
+<p>
+    <div class="row">
+      <div class="col-sm-6">
+
+        <%= form_tag :controller => 'students', :action => 'search_workshops', :method => 'get' do %>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Curso: </label>
+                  <%= select_tag 'idworkshop', options_from_collection_for_select(@workshops, :id, :name) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= submit_tag "Buscar", :name => nil, class: "btn btn-info" %>
+            </div>
+        <% end %>
+
+      </div>
+    </div>
+</p>
+
+<p>
+  <%= render "search" %>
+</p>
