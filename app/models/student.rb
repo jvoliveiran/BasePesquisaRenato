@@ -30,16 +30,20 @@ class Student < ActiveRecord::Base
   # turn - Turno da turma que compoe o livro. Ex: Tarde
   # book_id - Id do livro ao qual o aluno está vinculado
   def self.searchGeneral(bairro, observation_id, year_id, turn, workshop_id, book_id)
-    query = "SELECT s.*, b.* FROM students s "
+    query = "SELECT s.* FROM students s "
     query = query + " INNER JOIN student_books sb ON s.id = sb.student_id INNER JOIN books b ON sb.book_id = b.id "
 
     #busca a observação caso tenha sido selecionada
-    if(defined? observation_id && !observation_id.nil?)
+    if(!observation_id.nil? && observation_id != "")
       query = query + " INNER JOIN book_observations bo ON sb.book_observation_id = bo.id "
     end
 
+    query = query + " WHERE s.name != '' "
+
     #busca pelo bairro
-    query = query + " WHERE s.neighborhood ILIKE '%#{bairro}%' "
+    if(!bairro.nil? && bairro != "")
+    query = query + " AND s.neighborhood ILIKE '%#{bairro}%' "
+    end
 
     #busca a observação caso tenha sido selecionada, caso não tenha sido selecionada, busca por estudantes sem observações
     if(!observation_id.nil? && observation_id != "" && observation_id != 0)
