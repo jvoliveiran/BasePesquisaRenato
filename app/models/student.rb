@@ -42,9 +42,9 @@ class Student < ActiveRecord::Base
     query = query + " WHERE s.neighborhood ILIKE '%#{bairro}%' "
 
     #busca a observação caso tenha sido selecionada, caso não tenha sido selecionada, busca por estudantes sem observações
-    if(!observation_id.nil? && observation_id != "")
+    if(!observation_id.nil? && observation_id != "" && observation_id != 0)
       query = query + " AND sb.book_observation_id = #{observation_id} "
-    else
+    elsif(!observation_id.nil? && observation_id != "" && observation_id == 0)
       query = query + " AND sb.book_observation_id = null"
     end
 

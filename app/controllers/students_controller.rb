@@ -95,6 +95,12 @@ class StudentsController < ApplicationController
   def search_general
 
     @observations = BookObservation.all.order(:name)
+    #Adicionar Observação nula
+    book_observation_null = BookObservation.new
+    book_observation_null.name = "SEM EXCLUSÃO"
+    book_observation_null.id = 0
+    @observations.push(book_observation_null)
+
     @years = Year.all.order(:name)
     @workshops = Workshop.all.order(:name)
     @books = Book.all.order(:yearbook)
