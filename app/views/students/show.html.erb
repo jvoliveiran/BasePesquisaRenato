@@ -1,0 +1,29 @@
+<h1>Detalhes - Aluno</h1>
+
+<p>
+  Nome: <%= @student.name %>
+</p>
+
+<p>
+  Idade: <%= @student.age %>
+</p>
+
+<p>
+  Responsável: <%= @student.responsible %>
+</p>
+
+<p>
+  Profissão: <%= @student.profession.name %>
+</p>
+
+<p>
+  Logradouro: <%= @student.neighborhood %>
+</p>
+
+<p>
+  Rua: <%= @student.street %>
+</p>
+
+<p>
+  <%= link_to "Voltar", students_path, class: "btn btn-primary" %>
+</p>

@@ -1,0 +1,29 @@
+<h1>Relatório de Alunos</h1>
+
+<p>
+<div class="row">
+  <div class="col-sm-6">
+
+    <%= form_tag :controller => 'students', :action => 'search_years', :method => 'get' do %>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Ano: </label>
+              <%= select_tag 'idyear', options_from_collection_for_select(@years, :id, :name) %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= submit_tag "Buscar", :name => nil, class: "btn btn-info" %>
+        </div>
+    <% end %>
+
+  </div>
+</div>
+</p>
+
+<p>
+  <%= render "search" %>
+</p>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: 1
+  turn: MyString
+  classname: MyString
+  workshop_id: 
+  lesson_id: 
+  year_id: 
+  book_observation_id: 
+
+two:
+  year: 1
+  turn: MyString
+  classname: MyString
+  workshop_id: 
+  lesson_id: 
+  year_id: 
+  book_observation_id: 

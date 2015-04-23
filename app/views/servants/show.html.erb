@@ -1,0 +1,59 @@
+<h1>Detalhes - Servidor</h1>
+
+<p>
+  Nome: <%= @servant.name %>
+</p>
+
+<p>
+  Ano de Nascimento: <%= @servant.year_born %>
+</p>
+
+<p>
+  Naturalidade: <%= @servant.place_of_birth %>
+</p>
+
+<p>
+  Estado Civil: <%= @servant.civil_state %>
+</p>
+
+<p>
+  Ano de Ingresso: <%= @servant.year_in %>
+</p>
+
+<p>
+  Ano de Retirada: <%= @servant.year_out %>
+</p>
+
+<p>
+<h6>Cargos</h6>
+    <ul>
+        <% @role_servants.each do |rs| %>
+            <li>
+              <%= rs.role.name %>
+            </li>
+        <% end %>
+    </ul>
+</p>
+
+<p>
+  Vencimentos: <%= @servant.wage %>
+</p>
+
+<p>
+<h6>Disciplinas</h6>
+    <ul>
+        <% @discipline_servants.each do |ds| %>
+            <li>
+              <%= ds.discipline.name %>
+            </li>
+        <% end %>
+    </ul>
+</p>
+
+<p>
+  Observação: <%= @servant.obs %>
+</p>
+
+<p>
+  <%= link_to "Voltar", servants_path, class: "btn btn-primary" %>
+</p>

@@ -1,0 +1,48 @@
+<h1>Detalhes - Diário</h1>
+
+<p>
+  Ano: <%= @diary.year.name %>
+</p>
+
+<p>
+  Professor: <%= @diary.servant.name %>
+</p>
+
+<p>
+  Disciplina: <%= @diary.discipline.name %>
+</p>
+
+<p>
+    <h6>Alunos</h6>
+
+    <table class="table table-striped">
+        <tr>
+          <th>Aluno</th>
+          <th>Soma F</th>
+          <th>Soma C</th>
+          <th>Média</th>
+          <th>Comportamento</th>
+          <th>Aplicação</th>
+          <th>Faltas</th>
+          <th>Atualizar Dados</th>
+          <th>Remover do Diário</th>
+        </tr>
+        <% @student_diaries.each do |sd| %>
+            <tr>
+              <td><%= sd.student.name %></td>
+              <td><%= sd.value_amount_f %></td>
+              <td><%= sd.value_amount_c %></td>
+              <td><%= sd.average %></td>
+              <td><%= sd.behavior %></td>
+              <td><%= sd.application %></td>
+              <td><%= sd.absence %></td>
+              <td><%= link_to "Atualizar dados", edit_student_diary_path(sd), class: "btn btn-warning" %></td>
+              <td><%= link_to "Remover do Diário", sd, :confirm => "Tem certeza que deseja excluir esse estudante deste diário?", :method => :delete, class: "btn btn-danger" %></td>
+            </tr>
+        <% end %>
+    </table>
+</p>
+
+<p>
+  <%= link_to "Voltar", diaries_path, class: "btn btn-primary" %>
+</p>

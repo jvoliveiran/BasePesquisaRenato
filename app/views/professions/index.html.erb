@@ -1,0 +1,29 @@
+<h1>Profissões <small>Lista</small></h1>
+<p><%= link_to "Nova Profissão", new_profession_path, class: "btn btn-primary" %></p>
+
+<div class="text-center">
+  <p><%= page_entries_info @professions %></p>
+  <%= paginate @professions %>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Created At</th>
+    <th>Ver Mais</th>
+    <th>Editar</th>
+    <th>Deletar</th>
+  </tr>
+
+    <% @professions.each do |profession| %>
+      <tr>
+        <td><%= profession.id %></td>
+        <td><%= profession.name %></td>
+        <td><%= time_ago_in_words(profession.created_at) %></td>
+        <td><%= link_to "Detalhes", profession_path(profession), class: "btn btn-info" %></td>
+        <td><%= link_to "Editar", edit_profession_path(profession), class: "btn btn-warning" %></td>
+        <td><%= link_to "Deletar", profession, :confirm => "Tem certeza que deseja excluir essa profissão?", :method => :delete, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+</table>

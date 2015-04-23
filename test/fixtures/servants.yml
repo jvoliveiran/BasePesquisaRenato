@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  yearborn: 1
+  place_of_birth: MyString
+  civil_state: MyString
+  roles: 
+  year_in: 1
+  year_out: 1
+  disciplines: 
+  obs: MyText
+
+two:
+  name: MyString
+  yearborn: 1
+  place_of_birth: MyString
+  civil_state: MyString
+  roles: 
+  year_in: 1
+  year_out: 1
+  disciplines: 
+  obs: MyText

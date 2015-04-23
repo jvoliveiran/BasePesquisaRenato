@@ -1,0 +1,32 @@
+<h1>Servidores <small>Lista</small></h1>
+<p><%= link_to "Novo Servidor", new_servant_path, class: "btn btn-primary" %></p>
+
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Ano de Nascimento</th>
+    <th>Naturalidade</th>
+    <th>Ano de Ingresso</th>
+    <th>Ano de Retirada</th>
+    <th>Created At</th>
+    <th>Ver Mais</th>
+    <th>Editar</th>
+    <th>Deletar</th>
+  </tr>
+
+  <% @servants.each do |servant| %>
+      <tr>
+        <td><%= servant.id %></td>
+        <td><%= servant.name %></td>
+        <td><%= servant.year_born %></td>
+        <td><%= servant.place_of_birth %></td>
+        <td><%= servant.year_in %></td>
+        <td><%= servant.year_out %></td>
+        <td><%= time_ago_in_words(servant.created_at) %></td>
+        <td><%= link_to "Detalhes", servant_path(servant), class: "btn btn-info" %></td>
+        <td><%= link_to "Editar", edit_servant_path(servant), class: "btn btn-warning" %></td>
+        <td><%= link_to "Deletar", servant, :confirm => "Tem certeza que deseja excluir esse servidor??", :method => :delete, class: "btn btn-danger" %></td>
+      </tr>
+  <% end %>
+</table>

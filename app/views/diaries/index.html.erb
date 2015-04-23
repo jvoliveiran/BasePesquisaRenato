@@ -1,0 +1,28 @@
+<h1>Diários <small>Lista</small></h1>
+<p><%= link_to "Novo Diário", new_diary_path, class: "btn btn-primary" %></p>
+
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Ano</th>
+    <th>Disciplina</th>
+    <th>Professor</th>
+    <th>Created At</th>
+    <th>Ver Mais</th>
+    <th>Editar</th>
+    <th>Deletar</th>
+  </tr>
+
+  <% @diaries.each do |diary| %>
+      <tr>
+        <td><%= diary.id %></td>
+        <td><%= diary.year.name %></td>
+        <td><%= diary.discipline.name %></td>
+        <td><%= diary.servant.name %></td>
+        <td><%= time_ago_in_words(diary.created_at) %></td>
+        <td><%= link_to "Detalhes", diary_path(diary), class: "btn btn-info" %></td>
+        <td><%= link_to "Editar", edit_diary_path(diary), class: "btn btn-warning" %></td>
+        <td><%= link_to "Deletar", diary, :confirm => "Tem certeza que deseja excluir esse diário?", :method => :delete, class: "btn btn-danger" %></td>
+      </tr>
+  <% end %>
+</table>
