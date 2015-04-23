@@ -9,7 +9,11 @@ class Student < ActiveRecord::Base
 
   validates_presence_of :name
   validates_uniqueness_of :name
+<<<<<<< HEAD
   validates_numericality_of :age, :only_integer => true, :greater_than_or_equal_to => 10
+=======
+  validates_numericality_of :age, only_integer: true
+>>>>>>> 4e2e08bb344583451e7a0f9b1ccbffd8f5be1b9c
 
   def self.searchStudentsInWorkshop(workshop_id)
     Student.joins(:books).where(:books => { :workshop_id => workshop_id})
